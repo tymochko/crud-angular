@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular CRUD</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div ng-app="usersApp" ng-controller="usersController">
+        <h2>Table of Users</h2>
+        <div class="input-group">
+            <input type="text" ng-model="user.name" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            <input type="text" ng-model="user.surname" class="form-control" placeholder="Surname" aria-describedby="basic-addon1">
+        </div>
+        <button type="button" ng-click="addUser()" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add User
+        </button>
+        <!--<div ng-view=""></div>-->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.name}}</td>
+                <td>{{user.surname}}</td>
+                <td>
+                    <button type="button" ng-click="editUser(user)" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span> Edit
+                    </button>
+                    <button type="button" ng-click="delUser()" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Edit your User</h3>
+        <div class="input-group">
+            <input type="text" ng-model="current.name" value={{current.name}} class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            <input type="text" ng-model="current.surname" value="current.surname" class="form-control" placeholder="Surname" aria-describedby="basic-addon1">
+        </div>
+        <button type="button" ng-click="saveUser()" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save User
+        </button>
+    </div>
+</body>
+</html>
